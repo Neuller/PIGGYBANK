@@ -1,0 +1,11 @@
+.painel {
+    text-align: center;
+    border-radius: 25px;
+    position: absolute;
+    margin-top: 100px;
+}
+
+.imagemPainel {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

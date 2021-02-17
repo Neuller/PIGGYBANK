@@ -32,6 +32,10 @@
 <link rel="stylesheet" type="text/css" href="./Lib/select2/css/select2.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-<!-- CSS NATIVOS -->
-<link rel="stylesheet" type="text/css" href="">
+<!-- css NATIVOS -->
+<link rel="stylesheet" type="text/css" href="./Css/Backgrounds.css">
+<link rel="stylesheet" type="text/css" href="./Css/index.css">
+<link rel="stylesheet" type="text/css" href="./Css/Botoes.css">
+<link rel="stylesheet" type="text/css" href="./Css/Formularios.css">
+<link rel="stylesheet" type="text/css" href="./Css/All.css">
 

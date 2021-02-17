@@ -1,73 +1,41 @@
-<?php
-
-require_once "./Classes/Conexao.php";
-
-$obj = new conectar();
-$conexao = $obj -> Conexao();
-
-$sql = "SELECT * from usuarios WHERE grupo_usuario = 'admin' or 'ADMIN' ";
-$result = mysqli_query($conexao, $sql);
-
-$validar = 0;
-if (mysqli_num_rows($result) > 0) {
-	header("location: ./index.php");
-}
-
-?>
-
 <?php require_once "./Dependencias.php" ?>
 
 <!DOCTYPE html>
 <html>
-
-<body class="bgGray">
-	<div class="container conteudo">
-		<div class="col-sm-4"></div>
-		<div class="col-sm-4">
-			<div class="panel panel-default formLogin">
-				<!-- PANEL HEADING -->
+	<body class="bgMain">
+		<div class="container painel col-md-4 offset-md-4">
+			<div class="panel panel-default">
 				<div class="panel-heading">
-					OLÁ! CADASTRE-SE JÁ.
+					CADASTRE-SE JÁ NO PIGGY BANK!
 				</div>
 
-				<!-- PANEL BODY -->
 				<div class="panel panel-body">
-					<!-- IMAGEM -->
 					<div class="imagemPainel">
-						<img src="Img/NSERV.png" width="100%">
+						<img class="img-responsive img-thumbnail" src="Img/PiggyBank.png">
 					</div>
-					<!-- FORMULÁRIO -->
-					<form id="frmRegistro" class="col-md-12 col-sm-12 col-xs-12">
+
+					<form id="frmRegistro">
 						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 							<div>
-								<label>GRUPO<span class="required">*</span></label>
-								<select class="form-control input-sm" id="grupoSelect" name="grupoSelect">
-                                        <option value="">SELECIONE UM GRUPO</option>
-										<option value="ADMIN">ADMIN</option>
-                                </select>
-							</div>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
-							<div>
-								<label>NOME COMPLETO<span class="required">*</span></label>
+								<label class="itensLeft">NOME COMPLETO<span class="required">*</span></label>
 								<input type="text" class="form-control input-sm text-uppercase" name="nome" id="nome" maxlenght="100">
 							</div>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 							<div>
-								<label>USUÁRIO<span class="required">*</span></label>
-								<input type="text" class="form-control input-sm text-uppercase" name="usuario" id="usuario" maxlenght="10">
+								<label class="itensLeft">USUÁRIO<span class="required">*</span></label>
+								<input type="text" class="form-control input-sm text-uppercase" name="usuario" id="usuario" maxlenght="20">
 							</div>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 							<div>
-								<label>E-MAIL</label>
+								<label class="itensLeft">E-MAIL<span class="required">*</span></label>
 								<input type="text" class="form-control input-sm text-uppercase" name="email" id="email" maxlenght="50">
 							</div>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 							<div>
-								<label>SENHA<span class="required">*</span></label>
+								<label class="itensLeft">SENHA<span class="required">*</span></label>
 								<input type="password" class="form-control input-sm text-uppercase" name="senha" id="senha" maxlenght="10">
 							</div>
 						</div>
@@ -82,21 +50,17 @@ if (mysqli_num_rows($result) > 0) {
 				</div>
 			</div>
 		</div>
-	</div>
-</body>
-
+	</body>
 </html>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	});
-
 	$('#registrar').click(function() {
 		var nome = $("#nome").val();
 		var usuario = $("#usuario").val();
 		var senha = $("#senha").val();
+		var email = $("#email").val();
 
-		if ((nome == "") || (usuario == "") || (senha == "")) {
+		if ((nome == "") || (usuario == "") || (senha == "") || (email == "")) {
 			alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
 			return false;
 		}
@@ -109,9 +73,12 @@ if (mysqli_num_rows($result) > 0) {
 			url: "./Procedimentos/Login/CadastrarUsuarios.php",
 			success: function(r) {
 				if (r == 1) {
-					$('#frmRegistro')[0].reset();
-					window.location = "./index.php";
-					alertify.success("CADASTRO REALIZADO");
+					alertify.confirm('CADASTRO REALIZADO', 'GOSTARIA DE REALIZAR O PRIMEIRO ACESSO?', function(){
+						alertify.confirm().close();
+						window.location = "./Principal.php";
+					}, function(){
+						window.location = "./index.php";
+					});
 				} else {
 					alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
 				}

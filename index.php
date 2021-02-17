@@ -1,77 +1,48 @@
-<?php
-require_once "./Classes/Conexao.php";
-
-$obj = new conectar();
-$conexao = $obj->Conexao();
-
-$sql = "SELECT * from usuarios WHERE grupo_usuario = 'admin' or 'ADMIN' ";
-$result = mysqli_query($conexao, $sql);
-
-$validar = 0;
-if (mysqli_num_rows($result) > 0) {
-	$validar = 1;
-}
-?>
-
 <?php require_once "./Dependencias.php" ?>
-
 <!DOCTYPE html>
-<html lang="pt-br" class="Personalizado">
-
-<body class="bgGray">
-	<div class="container conteudo">
-		<div class="col-sm-4"></div>
-		<div class="col-sm-4">
-			<div class="panel panel-default formLogin">
-				<!-- PANEL HEADING -->
-				<div class="panel-heading">
-					OLÁ! ACESSE JÁ.
-				</div>
-				<!-- PANEL BODY -->
-				<div class="panel panel-body">
-					<!-- IMAGEM -->
-					<div class="imagemPainel">
-						<img src="Img/NSERV.png" width="100%">
+<html>
+	<body class="bgMain">
+		<div class="container painel col-md-4 offset-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						OLÁ! SEJA BEM VINDO(A) AO PIGGY BANK.
 					</div>
-					<!-- FORMULÁRIO -->
-					<form id="frmLogin" class="col-md-12 col-sm-12 col-xs-12">
-						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
-							<div>
-								<label>USUÁRIO<span class="required">*</span></label>
-								<input type="text" class="form-control input-sm text-uppercase" name="usuario" id="usuario" maxlenght="10">
-							</div>
+					<div class="panel panel-body">
+						<div class="imagemPainel">
+							<img class="img-responsive img-thumbnail" src="Img/PiggyBank.png">
 						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
-							<div>
-								<label>SENHA<span class="required">*</span></label>
-								<input type="password" name="senha" id="senha" class="form-control input-sm text-uppercase" maxlenght="10">
+
+						<form id="frmLogin">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
+								<div>
+									<label class="itensLeft">USUÁRIO<span class="required">*</span></label>
+									<input type="text" class="form-control input-sm text-uppercase" name="usuario" id="usuario" maxlenght="20">
+								</div>
 							</div>
-						</div>
-						<!-- BOTÕES -->
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="btnRight">
-							<?php if (!$validar) : ?>
-								<span class="btn btn-success" id="registrar" title="REGISTRAR">REGISTRAR</span>
-							<?php endif; ?>
-								<span class="btn btn-primary" id="acessar" title="ACESSAR">ACESSAR</span>
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
+								<div>
+									<label class="itensLeft">SENHA<span class="required">*</span></label>
+									<input type="password" name="senha" id="senha" class="form-control input-sm text-uppercase" maxlenght="10">
+								</div>
 							</div>
-						</div>
-					</form>
+							<!-- BOTÕES -->
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="btnRight">
+									<span class="btn btn-primary" id="acessar" title="ACESSAR">ACESSAR</span>
+									<span class="btn btn-success" id="registrar" title="REGISTRAR">REGISTRAR</span>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</body>
-
+	</body>
 </html>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	});	
-
 	$('#acessar').click(function() {
-		var usuario = $("usuario").val();
-		var senha = $("senha").val();
+		var usuario = $("#usuario").val();
+		var senha = $("#senha").val();
 
 		if ((usuario == "") || (senha == "")) {
 			alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
@@ -93,7 +64,6 @@ if (mysqli_num_rows($result) > 0) {
 			}
 		});
 	});
-
 
 	$('#registrar').click(function() {
 		window.location = "./Registrar.php";

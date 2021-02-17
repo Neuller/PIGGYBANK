@@ -1,0 +1,7 @@
+.required{
+    color: red !important;
+}
+
+.itensLeft {
+    float: left;
+}

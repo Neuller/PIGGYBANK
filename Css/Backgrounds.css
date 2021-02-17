@@ -1,0 +1,11 @@
+.bgMain {
+    background: #50d67b;
+}
+
+.bgGradient {
+    background: linear-gradient(to right, #50d67b, #50d67b);
+}
+
+.bgGray {
+    background: #f0f1e8;
+}
