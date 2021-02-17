@@ -23,6 +23,7 @@
 <script src="./Lib/select2/js/select2.js"></script>
 <script src="./Lib/moment.js"></script>
 <script src="./Lib/moment-with-locales.js"></script>
+<script src="./Js/Registrar.js"></script>
 
 <link rel="stylesheet" type="text/css" href="./Lib/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./Lib/bootstrap_bundle/css/bootstrap.min.css">

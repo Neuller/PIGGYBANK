@@ -67,6 +67,13 @@
 
 		dados = $('#frmRegistro').serialize();
 
+		var validaUser = verificarUser(usuario);
+		debugger;
+		if(validaUser == "YES"){
+			alertify.error("USUÁRIO EXISTENTE");
+			return false;
+		}
+
 		$.ajax({
 			type: "POST",
 			data: dados,
